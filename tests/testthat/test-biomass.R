@@ -24,3 +24,15 @@ test_that("biomass_index errors on non-numeric input", {
   expect_error(biomass_index(5, "b"))
   expect_error(biomass_index("a", "b"))
 })
+
+test_that("biomass_index uses verbosity when set as an option", {
+  withr::local_options(fishr.verbose = TRUE)
+
+  expect_snapshot(biomass_index(cpue = 5, area_swept = 100))
+})
+
+test_that("biomass_index verbosity falls back to FALSE when not set", {
+  withr::local_options(fishr.verbose = NULL)
+
+  expect_no_message(biomass_index(cpue = 5, area_swept = 100))
+})
