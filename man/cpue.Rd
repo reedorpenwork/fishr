@@ -19,7 +19,9 @@ cpue(
 
 \item{gear_factor}{numeric adjustment for gear standard}
 
-\item{method}{}
+\item{method}{switch}
+
+\item{verbose}{verbose}
 }
 \value{
 numeric vector of CPUE values

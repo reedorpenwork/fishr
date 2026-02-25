@@ -3,8 +3,8 @@
 #' @param catch numeric vector of catch
 #' @param effort numeric vector of effort
 #' @param gear_factor numeric adjustment for gear standard
-#' @param verbose
-#' @param method
+#' @param verbose verbose
+#' @param method switch
 #'
 #' @returns numeric vector of CPUE values
 #' @export
@@ -20,6 +20,8 @@ cpue <- function(
     verbose = getOption("fishr.verbose", FALSE)
 ) {
   method <- match.arg(method)
+
+  validate_numeric_inputs(catch = catch, effort = effort)
 
   if (verbose) {
     message("Processing ", length(catch), " records using ", method, " method")
