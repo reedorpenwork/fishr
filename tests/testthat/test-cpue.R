@@ -21,3 +21,10 @@ test_that("testing gear_factor scales correctly", {
   expect_equal(cpue(catch = 100, effort = 10), cpue(catch=100, effort=10, gear_factor = 1))
 
 })
+
+test_that("cpue handles missing data", {
+
+  expect_true(is.na(cpue(NA_real_,10)))
+  expect_true(is.na(cpue(100, NA_real_)))
+
+})
